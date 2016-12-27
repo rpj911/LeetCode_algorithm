@@ -57,11 +57,15 @@ public class ListNodeDemo {
         ListNode c1 = new ListNode(1);
         ListNode c2 = new ListNode(12);
         c1.next = c2;
-        c2.next = n1;
+        //c2.next = n1;
         
-        //ListNode mergeNode = mergeSortedListRec(m1, c1);
+        ListNode mergeNode = mergeLink(m1, c1);
+        //ListNode mergeNode2 = mergeLink(m1, c1);
         //ListNode mergeNode = mergeSortedList(m1, c1);
-        //printList(mergeNode);
+        printList(mergeNode);
+        //printList(mergeNode2);
+        
+        System.out.println();
         
         n1.next = n2;
         n2.next = n3;
@@ -432,6 +436,42 @@ public class ListNodeDemo {
         
         return dummyNode.next;
     } 
+    
+    static class Node {
+        Node next;
+        int val;
+        Node (int val) {
+            this.val = val;
+        }
+    } 
+    
+    public static ListNode mergeLink (ListNode aLink, ListNode bLink) {
+        ListNode dummy = new ListNode(0);
+
+        ListNode root = dummy;
+
+        while (aLink != null && bLink != null) {
+            if (aLink.val < bLink.val) {
+                dummy.next = aLink;
+                dummy = aLink;
+                aLink = aLink.next;
+                
+            } else {
+                dummy.next = bLink;
+                dummy = bLink;
+                bLink = bLink.next;
+                
+            }       
+        }
+
+        if (aLink != null) {
+            dummy.next = aLink;
+        } else {
+            dummy.next = bLink;
+        }
+
+        return root.next;
+    }
     
     /*
      * 先完成的算法，应该会简单一点儿。

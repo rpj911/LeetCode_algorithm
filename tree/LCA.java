@@ -1,4 +1,5 @@
-package Algorithms;
+package Algorithms.tree;
+
 
 
 /**
@@ -86,7 +87,6 @@ public class LCA {
         System.out.println(rst.toString());
         System.out.println(cnt);
     }
-    
     
     public TreeNode getLCA(TreeNode root, TreeNode node1, TreeNode node2) {
         cnt++;
